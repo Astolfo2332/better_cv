@@ -1,0 +1,12 @@
+services:
+  better-cv:
+    image: bettercv-api
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./data:/app/data
+      - ./src:/app/src
+      - .env:/app/.env
+    ports:
+      - "8080:8080"

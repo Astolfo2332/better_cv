@@ -1,0 +1,127 @@
+\documentclass[10pt,a4paper]{article}
+
+% -------------------- PACKAGES --------------------
+\usepackage[margin=1.8cm]{geometry}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{setspace}
+\usepackage{parskip}
+\usepackage{fontawesome5}
+\usepackage{multicol}
+
+\setstretch{1.00}
+
+% -------------------- FORMATTING --------------------
+\titleformat{\section}
+  {\large\bfseries}
+  {}
+  {0em}
+  {}
+  [\titlerule]
+
+\renewcommand{\labelitemi}{--}
+\setlist[itemize]{noitemsep, topsep=2pt, leftmargin=1.2em}
+
+% -------------------- DOCUMENT --------------------
+\begin{document}
+
+% -------------------- HEADER --------------------
+\begin{center}
+    {\LARGE \textbf{{Nombre Completo}}} \\[6pt]
+\end{center}
+
+{Perfil Profesional / Resumen Breve} \\[-1pt]
+
+\faPhone\ {Teléfono} \quad
+\faEnvelope\ \href{mailto:{Email}}{{Email}} \quad
+\faGithub\ \href{{URL GitHub}}{{GitHub}} \quad
+\faLinkedin\ \href{{URL LinkedIn}}{{LinkedIn}}
+
+\begin{center}
+    {Ciudad, País}
+\end{center}
+
+% -------------------- EDUCATION --------------------
+\section*{Education}
+
+\textbf{{Título Académico}} — {Universidad}, {Ciudad}, {País} GPA: {GPA} \hfill {Año de Graduación}
+
+\textbf{{Segundo Título / Posgrado}} — {Universidad}, {Ciudad}, {País} \\
+{Estado o Fecha Esperada}
+
+\textit{Relevant Courses:}
+\setlength{\multicolsep}{2pt}
+\begin{multicols}{2}
+\raggedright
+-- {Curso 1}\\
+-- {Curso 2}\\
+-- {Curso 3}\\
+-- {Curso 4}\\
+-- {Curso 5}\\
+-- {Curso 6}
+\end{multicols}
+\vspace{-10pt}
+
+% -------------------- WORK EXPERIENCE --------------------
+\section*{Work Experience}
+
+\textbf{{Empresa}} — {Ciudad}, {País} \\
+\textit{{Cargo}} \hfill {Fecha Inicio -- Fecha Fin}
+\begin{itemize}
+    \item {Responsabilidad / Logro 1}
+    \item {Responsabilidad / Logro 2}
+    \item {Responsabilidad / Logro 3}
+    \item {Responsabilidad / Logro 4}
+\end{itemize}
+
+\vspace{-10pt}
+
+% -------------------- TECHNICAL SKILLS --------------------
+\section*{Technical Skills}
+
+\textbf{Programming:} {Lenguajes, frameworks, librerías}
+
+\textbf{Cloud Services:} {Servicios cloud}
+
+\textbf{Languages:} {Idioma 1 (Nivel)}, {Idioma 2 (Nivel)}
+
+% -------------------- CERTIFICATIONS --------------------
+\vspace{-10pt}
+\section*{Certifications}
+
+\setlength{\multicolsep}{2pt}
+\begin{multicols}{2}
+\raggedright
+-- {Certificación 1}\\
+-- {Certificación 2}\\
+-- {Certificación 3}\\
+-- {Certificación 4}\\
+-- {Certificación 5}
+\end{multicols}
+\vspace{-10pt}
+
+% -------------------- PROJECTS --------------------
+\section*{Relevant Projects}
+
+\textbf{{Nombre del Proyecto}}
+\begin{itemize}
+    \item {Descripción / Logro 1}
+    \item {Descripción / Logro 2}
+    \item {Tecnologías utilizadas}
+\end{itemize}
+
+\textbf{{Nombre del Proyecto}}
+\begin{itemize}
+    \item {Descripción / Logro 1}
+    \item {Descripción / Logro 2}
+\end{itemize}
+
+\vfill
+\begin{center}
+{Texto de cierre (ej. References available upon request)}
+\end{center}
+
+% -------------------- END --------------------
+
+\end{document}

@@ -1,0 +1,160 @@
+\documentclass[10pt,a4paper]{article}
+
+% -------------------- PACKAGES --------------------
+\usepackage[margin=1.8cm]{geometry}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{setspace}
+\usepackage{parskip}
+\usepackage{fontawesome5}
+\usepackage{tabularx}
+\usepackage{multicol}
+
+
+\setstretch{1.00}
+
+% -------------------- FORMATTING --------------------
+\titleformat{\section}
+  {\large\bfseries}
+  {}
+  {0em}
+  {}
+  [\titlerule]
+
+\renewcommand{\labelitemi}{--}
+\setlist[itemize]{noitemsep, topsep=2pt, leftmargin=1.2em}
+
+% -------------------- DOCUMENT --------------------
+\begin{document}
+
+% -------------------- HEADER --------------------
+\begin{center}
+    {\LARGE \textbf{Miguel López Vélez}} \\[6pt]
+\end{center}
+
+Bioengineer pursuing a Master's degree in Artificial Intelligence with 3 years of experience working with medical images, LLMs, and structured and unstructured data to support medical and administrative decision-making through Machine Learning and Deep Learning models. Experienced in multidisciplinary collaborative projects with fixed goals. Always curious and eager to learn, focused on building accurate, efficient, and scalable models. \\[-1pt]
+
+    \faPhone\ +57 312 241 9243 \quad
+    \faEnvelope\ \href{mailto:migue19sep@gmail.com}{migue19sep@gmail.com} \quad
+    \faGithub\ \href{https://github.com/Astolfo2332}{github.com/Astolfo2332} \quad
+    \faLinkedin\ \href{https://www.linkedin.com/in/miguel-lopez-velez/}{in/miguel-lopez-velez}
+
+\begin{center}    
+    Medellín, Colombia
+\end{center}
+% -------------------- EDUCATION --------------------
+\section*{Education}
+
+\textbf{Bioengineering B.Sc.} — University of Antioquia, Medellín, Colombia GPA: 4.1 / 5.0 \hfill Graduated: 2024
+
+\textbf{Master’s in Artificial Intelligence} — International University of Valencia, Valencia, Spain \\
+Expected Graduation: October 2025
+
+\textit{Relevant Courses:}
+\setlength{\multicolsep}{2pt}
+\begin{multicols}{2}
+\raggedright
+-- Machine Learning and MLOps \\
+-- Computer Vision\\
+-- Statistical Analysis\\
+-- LLMs and LLMOps\\
+-- Web Development\\
+-- Cloud Services (Google Cloud, AWS)
+\end{multicols}
+\vspace{-10pt}
+% -------------------- WORK EXPERIENCE --------------------
+\section*{Work Experience}
+
+\textbf{Nutraceutika SAS} — Medellín, Colombia \\
+\textit{Researcher} \hfill October 2020 -- July 2024
+\begin{itemize}
+    \item Collected, recorded, and organized experimental data with at least 95\% reliability, implementing protocols that reduced processing time by 20\%, using SQL and NoSQL databases (MariaDB, MongoDB).
+    \item Applied statistical analysis in Python using Matplotlib, SciPy, and NumPy for effective data interpretation and visualization.
+    \item Developed high-performance ML models using Scikit-learn on industrial sensor data, ensuring robustness through preprocessing and assumption validation.
+    \item Optimized free fatty acid generation using central composite design and response surface methodology, achieving 90.8\% model accuracy and 75.59\% product yield with a 230\% profit margin.
+    \item Designed and deployed LLM pipelines for document generation and data extraction, reducing task time by 75\% using Hugging Face, LangChain, MLflow, and Docker.
+    \item Collaborated within multidisciplinary teams (8–12 members), coordinating tasks and maintaining high performance standards.
+\end{itemize}
+
+\textbf{ALF Electrical Services} — Medellín, Colombia \\
+\textit{Technology Innovation Developer} \hfill January 2016 -- February 2018
+\begin{itemize}
+    \item Maintained 95\% accuracy in data analysis while achieving 100\% compliance with RETIE electrical safety standards.
+    \item Collaborated with cross-functional teams (10–15 members) to integrate new technologies into existing electrical systems.
+    \item Reduced downtime by 38\% and improved operational efficiency by 25\% through early fault detection and automation.
+\end{itemize}
+\vspace{-10pt}
+
+% -------------------- TECHNICAL SKILLS --------------------
+\section*{Technical Skills}
+
+\textbf{Programming:} Python (Pandas, NumPy, Scikit-learn, SciPy, TensorFlow, PyTorch), MLflow, Hugging Face, LangChain, MATLAB, Git, Bash, C (Microcontrollers), JavaScript (React, Vue), Docker
+
+\textbf{Cloud Services:} AWS, Google Cloud, Google Kubernetes Engine (GKE)
+
+\textbf{Languages:} English (C1), Spanish (Native)
+
+% -------------------- CERTIFICATIONS --------------------
+\vspace{-10pt}
+\section*{Certifications}
+
+\begin{multicols}{2}
+\raggedright
+-- IN2LAB Artificial Intelligence for Engineering and Science\\
+-- Developing Applications in Python on AWS\\
+-- Large Language Models (LLMs): Application through Production\\
+-- Architecting with Google Kubernetes Engine: Foundations\\
+-- Google Cloud Fundamentals: Core Infrastructure\\
+\end{multicols}
+\vspace{-10pt}
+
+% -------------------- PROJECTS --------------------
+\section*{Relevant Projects}
+
+\textbf{Deep Learning Pipeline for Prostate Cancer Classification and Segmentation}
+\begin{itemize}
+    \item Developed a pipeline using MONAI (Res-U-Net) with PyTorch for prostate segmentation and cancer detection.
+    \item Achieved 96\% classification accuracy and improved Dice coefficient by 40\% compared to the original study.
+    \item Deployed with MLflow and Docker, integrating APIs for visualization using 3D Slicer.
+\end{itemize}
+
+\textbf{H\&M Product Re-purchase Prediction}
+\begin{itemize}
+    \item Performed statistical analysis using NumPy, SciPy, and Matplotlib on customer and article datasets.
+    \item Achieved best performance with Random Forest (RMSE: 0.29) and 91\% correct predictions.
+\end{itemize}
+
+\textbf{Neural Network for Respiratory Sound Classification}
+\begin{itemize}
+    \item Processed audio signals using filtering, wavelet decomposition, and Welch PSD estimation.
+    \item Trained neural networks achieving up to 66.2\% accuracy depending on classification task.
+\end{itemize}
+
+\textbf{Patient Information Management System}
+\begin{itemize}
+    \item Developed a Python-based application for patient data, ECG signals, and RX images.
+    \item Compressed ECG data by 60\% using FFT without compromising quality.
+    \item Designed a QT6 GUI with a user rating of 4.1/5 and integrated MariaDB storage.
+\end{itemize}
+
+\textbf{fMRI Pre/Post-processing Pipeline (FSL \& BIDS)}
+\begin{itemize}
+    \item Implemented a Bash-based pipeline using FSL and BIDS, reducing processing time by 85\%.
+    \item Improved reproducibility by 20\% and reduced errors by 82\% using Docker.
+\end{itemize}
+
+\textbf{Web App for Deaf Users}
+\begin{itemize}
+    \item Developed a React-based web application with sign language interpretation of engineering terms.
+    \item Implemented a Flask backend with MongoDB and deployed via Docker.
+\end{itemize}
+
+\vfill
+\begin{center}
+References available upon request
+\end{center}
+
+\end{document}
+
+

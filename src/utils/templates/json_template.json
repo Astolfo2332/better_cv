@@ -1,0 +1,54 @@
+{
+  "header": {
+    "name": "",
+    "summary": "",
+    "contact": {
+      "phone": "",
+      "email": "",
+      "github": "",
+      "linkedin": "",
+      "location": ""
+    }
+  },
+
+  "education": [
+    {
+      "degree": "",
+      "institution": "",
+      "location": "",
+      "gpa": "",
+      "date": ""
+    }
+  ],
+
+  "relevant_courses": [],
+
+  "work_experience": [
+    {
+      "company": "",
+      "location": "",
+      "role": "",
+      "period": "",
+      "highlights": []
+    }
+  ],
+
+  "technical_skills": {
+    "programming": "",
+    "cloud": "",
+    "languages": ""
+  },
+
+  "certifications": [],
+
+  "projects": [
+    {
+      "title": "",
+      "description": []
+    }
+  ],
+
+  "footer": {
+    "note": ""
+  }
+}
