@@ -3,6 +3,12 @@ __pycache__/
 *.py[codz]
 *$py.class
 
+# Test coverage reports
+htmlcov/
+coverage.xml
+.coverage
+test-results.xml
+
 # C extensions
 *.so
 
