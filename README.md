@@ -5,7 +5,7 @@
 
 A tool to adapt your curriculum to any position
 
-## 🧪 Tests y Coverage
+##  Tests y Coverage
 
 Para ejecutar los tests y generar automáticamente los badges:
 
