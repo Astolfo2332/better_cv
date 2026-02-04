@@ -22,32 +22,44 @@ async def latex_agent(app_state:AppState) -> dict:
     app_state = await format_to_latex(app_state)
 
     final_text = get_all_tex(app_state)
-    out_dir = "/app/src/outputs"
-    with open(f"{out_dir}/final_tex.tex", "w", encoding="utf-8") as f:
-        f.write(final_text)
+
+    file_rename = write_and_compile_latex(final_text)
+
+    #TODO: Hacerlo más resiliente
+    return {"latex_content": PATH_FROM_URI + file_rename}
+
+def re_do_latex(latex_content:str) -> dict:
+    file_rename = write_and_compile_latex(latex_content)
+
+    return {"response": PATH_FROM_URI + file_rename}
+
+def write_and_compile_latex(latex_content:str, output_dir:str="/app/src/outputs") -> str:
+    with open(f"{output_dir}/final_tex.tex", "w", encoding="utf-8") as f:
+        f.write(latex_content)
 
     subprocess.run(
-        ["pdflatex", "-interaction=nonstopmode", os.path.join(out_dir, "final_tex.tex")],
-        cwd=out_dir,
+        ["pdflatex", "-interaction=nonstopmode", os.path.join(output_dir, "final_tex.tex")],
+        cwd=output_dir,
         check=True,
     )
-    #Se comprime el .tex y el .pdf en un zip
+
+    #Se comprime el .tex y .pdf en un zip
     subprocess.run(
         ["zip", "cv_output.zip", "final_tex.tex", "final_tex.pdf"],
-        cwd=out_dir,
+        cwd=output_dir,
         check=True,
     )
+
     # Se cambia el nombre por una combinación de la fecha y un identificador único
     date_str = datetime.now().strftime("%Y%m%d")
     unique_id = uuid4().hex[:6]  # Obtener los primeros 6 caracteres de un UUID4
     file_rename = f"cv_output_{date_str}_{unique_id}.zip"
     os.rename(
-        os.path.join(out_dir, "cv_output.zip"),
-        os.path.join(out_dir, file_rename)
+        os.path.join(output_dir, "cv_output.zip"),
+        os.path.join(output_dir, file_rename)
     )
 
-    #TODO: Hacerlo más resiliente
-    return {"latex_content": PATH_FROM_URI + file_rename}
+    return file_rename
 
 async def format_to_latex(app_state:AppState) -> AppState:
     experience_info = app_state.experience_info

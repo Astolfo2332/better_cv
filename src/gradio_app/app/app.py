@@ -4,7 +4,7 @@ from src.domain.request_models import Request
 from src.gradio_app.app.utils.gradio_customs import create_custom_chatbot
 from src.gradio_app.app.domain.app_state import AppState
 from src.gradio_app.interfaces.app_interface import get_available_models_interface, get_available_vendors_interface, \
-    process_interface
+    process_interface, re_do_latex_interface
 
 DEFAULT_LANG="Español"
 DEFAULT_JSON_TEMPLATE='{\n  "clave": "valor"\n}'
@@ -66,58 +66,72 @@ def gradio_app():
                 interactive=True
             )
 
-            # Logica de actualización de modelos según el vendor seleccionado
-
-            vendor_dropdown.change(
-                fn=change_vendor_models,
-                inputs=[vendor_dropdown],
-                outputs=[model_dropdown]
-            ).then(
-                fn=update_provider,
-                inputs=[vendor_dropdown, app_state],
-                outputs=[app_state]
-            )
-            model_dropdown.change(
-                fn=update_model,
-                inputs=[model_dropdown, app_state],
-                outputs=[app_state]
-            )
-            language_dropdown.change(
-                fn=update_language,
-                inputs=[language_dropdown, app_state],
-                outputs=[app_state]
+        with gr.Tab("Reprocesar TEX"):
+            gr.Markdown("### Reprocesar Documentos TEX")
+            gr.ChatInterface(
+                fn=re_do_latex_chat,
+                title="Reprocesar Documentos TEX",
+                description="Sube un documento TEX para que sea reprocesado",
+                chatbot=gr.Chatbot(height="75vh"),
+                fill_width=True,
+                fill_height=True,
+                api_visibility="private"
             )
 
-            json_input.input(
-                fn=update_json_template,
-                inputs=[json_input, app_state],
-                outputs=[app_state]
-            )
+        # Logica de actualización de modelos según el vendor seleccionado
 
-            json_input.change(
-                fn=update_json_template,
-                inputs=[json_input, app_state],
-                outputs=[app_state]
-            )
+        vendor_dropdown.change(
+            fn=change_vendor_models,
+            inputs=[vendor_dropdown],
+            outputs=[model_dropdown]
+        ).then(
+            fn=update_provider,
+            inputs=[vendor_dropdown, app_state],
+            outputs=[app_state]
+        )
+        model_dropdown.change(
+            fn=update_model,
+            inputs=[model_dropdown, app_state],
+            outputs=[app_state]
+        )
+        language_dropdown.change(
+            fn=update_language,
+            inputs=[language_dropdown, app_state],
+            outputs=[app_state]
+        )
+
+        json_input.input(
+            fn=update_json_template,
+            inputs=[json_input, app_state],
+            outputs=[app_state]
+        )
+
+        json_input.change(
+            fn=update_json_template,
+            inputs=[json_input, app_state],
+            outputs=[app_state]
+        )
 
     return app
 
-async def chat_logic(message, history, app_state:gr.State):
-    request = Request(
-        job_offer=message,
-        json_template=app_state.json_template,
-        llm_vendor=app_state.llm_provider,
-        model=app_state.llm_model,
-        response_language=app_state.response_language
-    )
-
-    response = await process_interface(request)
+async def chat_logic(message, history, app_state):
+    app_state.job_offer = message
+    response = await process_interface(app_state)
     response = response.get("response")
     if response is None:
         response = "Lo siento, no pude generar una respuesta en este momento."
         return response
 
     return f"Descarga el documento generado: [Aquí]({response}) UwU"
+
+async def re_do_latex_chat(message, history):
+    response = await re_do_latex_interface(message)
+    response = response.get("response")
+    if response is None:
+        response = "Lo siento, no pude procesar el documento TEX en este momento."
+    else:
+        response = f"Descarga el documento reprocesado: [Aquí]({response}) OwO"
+    return response
 
 def change_vendor_models(vendor_name):
     models = get_available_models_interface(vendor_name)

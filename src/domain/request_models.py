@@ -6,3 +6,7 @@ class Request(BaseModel):
     llm_vendor: str
     model: str
     response_language:str
+
+
+class ReProcessTexRequest(BaseModel):
+    new_tex : str

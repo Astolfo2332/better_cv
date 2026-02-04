@@ -2,9 +2,10 @@ from fastapi import FastAPI, HTTPException, APIRouter
 import json
 from dotenv import load_dotenv
 
+from src.application.agents.latex_agent import re_do_latex
 from src.application.orquestrator.graph_orq import orchestrator
 from src.domain.orq_models import AppState
-from src.domain.request_models import Request
+from src.domain.request_models import Request, ReProcessTexRequest
 from src.application.models.model_registry import models_registry
 
 import os
@@ -13,6 +14,7 @@ from fastapi.responses import FileResponse
 load_dotenv()
 
 router = APIRouter()
+
 
 @router.post("/process")
 async def process(request: Request):
@@ -43,10 +45,17 @@ async def process(request: Request):
     except Exception as err:
         raise HTTPException(status_code=400, detail=str(err))
 
+
+@router.post("/re_process_tex")
+async def re_process_tex(request: ReProcessTexRequest):
+    return re_do_latex(request.new_tex)
+
+
 @router.get("available_vendors")
 def get_available_vendors():
     """Endpoint para obtener los vendors disponibles"""
     return {"available_vendors": list(models_registry.keys())}
+
 
 @router.get("/available_models/{vendor_name}")
 def get_available_models(vendor_name: str):
@@ -56,6 +65,7 @@ def get_available_models(vendor_name: str):
                                                   f" {models_registry.keys()}")
     llm = models_registry.get(vendor_name)
     return {"available_models": llm.get_available_models()}
+
 
 @router.get("/download_file/{file_name}")
 def download_file(file_name: str):
